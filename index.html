@@ -3,9 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>BUBU DREAMS</title>
 </head>
 <body>
-    
+
+        <!--homepage pannel-->
+<!-- 
+        <div id="startScreenPannel">
+            <img src="../BUBU/images/bubu.png" alt="" id="bubuDreams">
+            <button id="butt-on"></button>
+        </div>
+ -->
+        <!--game screen, after pressing #butt-on-->
+
+        <div id="container"> <!-- has 3 div, should be displayed in row -->
+
+            <!--this div is for leftCollumn, has 3 div inside: logo, livesCount, cloudCount
+            display collomun-->
+            <div id="leftCollumn">
+                <div id="logo">
+                    <img src="../BUBU/images/bubu.png" alt="">
+                </div>
+
+                <!--livesScreen needs a count over an image-->
+
+                <div id="livesScreen">
+                    <img src="../BUBU/images/bubu.png" alt="" id="livesCat">
+                    <h3 id="livesCountScreen">
+
+                    </h3> 9 LIVES <!-- APPEND.livesCount -->
+                </div>
+
+                <!-- cloudsScreen needs a count over an image -->
+
+                <div id="cloudScreen">
+                    <img src="../BUBU/images/cloudM.png" alt="" id="cloudLogo">
+                    <h3 id="cloudCount">CLOUDS
+
+                    </h3><!-- APPEND.cloudCount -->
+
+                </div>
+                
+            </div>
+
+            <!-- this div is for playScreen -->
+            <div id="playScreen">
+                <img src="images/sky.png" alt="" id="sky">
+            </div>
+
+
+            <!-- this div is for rightCollumn, has 2 div. should display collumn -->
+
+            <div id="rightCollumn">
+
+                <!-- this div has seconds counting while game(), h1 width should be responsive-->
+
+                <div id="timeScreen">
+                    <h1 id="secCount"></h1><!-- APPEND.seconds -->
+                    <br>
+                    <p id="pSec">SECONDS</p>
+                </div>
+
+                <!-- this div has points counting while game(), h1 width should be responsive -->
+
+                <div id="pointsScreen">
+                    <h1 id="pointCount"></h1><!-- APPEND.gamePoints -->
+                    <br>
+                    <p id="pPoint">POINTS</p>
+                </div>
+            </div>
+        </div >
+
+
+         <!-- gameOverScreen - should display games played, div for bestTime, div for best score and restart button -->
+
+<!-- 
+        <div id="gameoverScreen">
+
+            <h1 id="bubuWokeUp">BUBU WOKE UP!</h1>
+
+            <div id="bestTime"></div>
+
+            <div id="bestScore"></div>
+
+            <button id="restartButton"></button>
+
+        </div> -->
+
+
+    <script src="enemy.js" ></script>
+    <script src="cloud.js" ></script>
+    <script src="bubu.js" ></script>
+    <script src="game.js" ></script>
+    <script src="script.js" ></script>
 </body>
 </html>
