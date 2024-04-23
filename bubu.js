@@ -1,17 +1,17 @@
 
 class Bubu {
-    constructor (container, playScreen, left, top, width, height){
+    constructor (container, playScreen, left, top, imgSrc){
         this.container = container;
         this.playScreen = playScreen;
         this.left = left;
         this.top = top;
         this.width = 100;
-        this.height = 209;
+        this.height = 100;
         this.directionX = 0;
         this.directionY = 0;
 
         this.element = document.createElement('img');
-        this.element.src = 'images/bubuG.png';
+        this.element.src = imgSrc;
 
         this.element.style.position = 'absolute';
         this.element.style.width = `${this.width}px`;
@@ -51,6 +51,7 @@ class Bubu {
       this.element.style.left = `${this.left}px`
       this.element.style.top = `${this.top}px`
     }
+    
     didCollide(obstacle){
         const bubuRect = this.element.getBoundingClientRect()
         const obstacleRect = obstacle.element.getBoundingClientRect()

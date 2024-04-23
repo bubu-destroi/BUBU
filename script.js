@@ -50,8 +50,8 @@ window.onload = function () {
   
     window.addEventListener('keydown' , handleKeyDown)
     window.addEventListener('keyup', () => {
-      game.player.directionX = 0;
-      game.player.directionY = 0;
+      game.bubu.directionX = 0;
+      game.bubu.directionY = 0;
     
     })
   

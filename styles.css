@@ -1,18 +1,20 @@
 
-#container {
+*{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-stretch: 200% ;
+}
 
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
+#container {
+    display: none;
+   
     flex-direction: row;
-    -webkit-flex-wrap: nowrap;
+  
     flex-wrap: nowrap;
-    -webkit-justify-content: space-around;
+
     justify-content: space-around;
-    -webkit-align-content: stretch;
-    align-content: stretch;
-    -webkit-align-items: center;
+  
     align-items: center;
+    height: 800px;
     
 }
 
@@ -29,11 +31,14 @@
   align-content: stretch;
   -webkit-align-items: flex-start;
   align-items: flex-start;
+  width: 200px;
 }
 
 #playScreen{
-  height: 600px;
-  width: 436px;
+  background-image: url('./images/sky.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
 }
 
 
@@ -50,5 +55,17 @@
   align-content: space-between;
   -webkit-align-items: flex-end;
   align-items: flex-end;
+  width: 200px;
   
+}
+/* 
+#sky{
+  display: flex;
+  align-self: center;
+  height: 700px;
+  width: 500px;
+} */
+
+.bubu-img{
+width: 200px;
 }

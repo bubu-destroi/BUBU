@@ -4,32 +4,43 @@ class Game{
         this.container = document.getElementById('container');
         this.playScreen = document.getElementById('playScreen')
         this.gameoverScreen = document.getElementById('gameoverScreen');
-        this.bubu = new Bubu(this.container, this.playScreen, 200, 500, 100, 150, 'images/bubuG.png');
+        this.bubu = new Bubu(this.container, this.playScreen, 200, 500, './images/bubu.png');
         this.lives = 9;
+        this.livesCountScreen = document.getElementById("livesCountScreen")
+
+
         this.height = 600;
         this.width = 436;
         this.clouds = [];
         this.enemies = [];
         this.totalPoints = 0;
         this.gamePoints = 0;
+        this.pointCount = document.getElementById('pointCount');
+
         this.cloudCount = 0;
+        this.cloudh1 = document.getElementById('cloudCount')
+
         this.enemyCount = 0;
+
         this.gameIsOver = false;
+
         this.gameIntervalId = null;
         this.gameLoopFrequency = Math.floor(1000/60);
         this.secCount = this.gameLoopFrequency/60;
+        this.secondsCountScreen = document.getElementById('secCount')
         this.timer = 0;
         this.level= 1;
 
     }
     start(){
+        this.startScreenPannel.style.display = 'none';
         this.playScreen.style.width = `${this.width}px`;
         this.playScreen.style.height = `${this.height}px`;
         /* removing startScreenPannel */
-        this.startScreenPannel.style.display = 'none';
 
         /* show the gamescreen */
-        this.container.style.display = 'block';
+        this.container.style.display = 'flex';
+        this.container.style.justifyContent = 'space-between';
 
         /* should descend "HIT THE CLOUDS div" */
 
@@ -46,19 +57,11 @@ class Game{
         if(this.gameIsOver){
             clearInterval(this.gameIntervalId)
         }
+        console.log(this.secCount)
     }
 
     update(){
         this.bubu.move()
-
-
-        if(Math.random()> 0.98 && this.clouds.length < 10 * this.level) {
-            this.clouds.push(new Cloud(this.gameScreen))
-        }
-
-        if(Math.random()> 0.98 && this.enemies.length < 2 * this.level) {
-            this.clouds.push(new Cloud(this.gameScreen))
-        }
 
 
         for(let i=0; i< this.clouds.length; i++){
@@ -73,9 +76,9 @@ class Game{
                 this.clouds.splice(i,1)
                 this.gamePoints += 5
                 this.cloudCount ++
-                if(this.cloudCount > 5){
+                if(this.cloudCount > 10){
                     this.lives ++
-                    this.cloudCount -= 5
+                    this.cloudCount -= 10
                 }
                 i--
             }else if(cloud.top > this.height){
@@ -87,6 +90,15 @@ class Game{
             }
         
         }
+
+
+        if(Math.random()> 0.98 && this.clouds.length < 10 * this.level) {
+            this.clouds.push(new Cloud(this.playScreen))
+        }
+
+       
+
+
         for(let i=0; i< this.enemies.length; i++){
             const enemy = this.enemies[i]
 
@@ -107,15 +119,28 @@ class Game{
                 i--
             }
         }
-        
+        if(Math.random()> 0.98 && this.enemies.length < 2 * this.level) {
+            this.enemies.push(new Enemy(this.gameScreen))
+        } 
+
+  
 
         if(this.lives === 0){
             this.endGame()
         }
 
-        if(this.secCount % 60 === 0){
+        if(this.secCount % 30 === 0){
             this.level ++
         }
+
+
+        this.pointCount.innerText = this.gamePoints
+
+        this.cloudh1.innerText = this.cloudCount
+
+        this.livesCountScreen.innerText = this.lives
+
+        this.secondsCountScreen.innerText = this.secCount
 
 
 
