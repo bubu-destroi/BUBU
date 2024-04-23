@@ -3,8 +3,8 @@ class Enemy {
         this.playScreen = playScreen
         this.left = Math.floor(Math.random() * 300 + 50);
         this.top = 0;
-        this.width = 50;
-        this.height = 100;
+        this.width = 15;
+        this.height = 20;
 
         this.element = document.createElement('img');
         this.element.src = './images/galinha.png';
@@ -22,7 +22,7 @@ class Enemy {
         
     }
     move(){
-        this.top += 3
+        this.top += 1
         this.updatePosition()
     }
     updatePosition(){

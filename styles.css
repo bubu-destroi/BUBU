@@ -1,8 +1,26 @@
 
 *{
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-stretch: 200% ;
+  font-family: "Jersey 25", sans-serif;
+  font-weight: 1000;
+  font-style: normal;
 }
+
+#startScreenPannel{
+  flex-direction: row;
+  
+  flex-wrap: nowrap;
+
+  justify-content: center;
+
+  align-items: center;
+  height: 600px;
+  
+}
+
+#bubuDreams{
+  height: 600px;
+}
+
 
 #container {
     display: none;
@@ -14,7 +32,7 @@
     justify-content: space-around;
   
     align-items: center;
-    height: 800px;
+    height: 600px;
     
 }
 
@@ -25,12 +43,12 @@
   flex-direction: column;
   -webkit-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  -webkit-justify-content: space-around;
-  justify-content: space-around;
+  -webkit-justify-content: center;
+  justify-content: center;
   -webkit-align-content: stretch;
   align-content: stretch;
-  -webkit-align-items: flex-start;
-  align-items: flex-start;
+  -webkit-align-items: center;
+  align-items: center;
   width: 200px;
 }
 
@@ -68,4 +86,8 @@
 
 .bubu-img{
 width: 200px;
+}
+
+h1,h3{
+  font-size: 400%;
 }

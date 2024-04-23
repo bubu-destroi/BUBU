@@ -57,7 +57,6 @@ class Game{
         if(this.gameIsOver){
             clearInterval(this.gameIntervalId)
         }
-        console.log(this.secCount)
     }
 
     update(){
@@ -119,9 +118,11 @@ class Game{
                 i--
             }
         }
-        if(Math.random()> 0.98 && this.enemies.length < 2 * this.level) {
-            this.enemies.push(new Enemy(this.gameScreen))
-        } 
+        if(this.level > 2){
+             if(Math.random()> 0.8 && this.enemies.length < 1 * this.level -1) {
+            this.enemies.push(new Enemy(this.playScreen))
+             } 
+        }
 
   
 
@@ -129,9 +130,14 @@ class Game{
             this.endGame()
         }
 
-        if(this.secCount % 30 === 0){
-            this.level ++
-        }
+        this.level = Math.floor(this.secCount/30) + 1
+
+      /*   if(this.secCount > 1 && this.secCount % 30 === 0){
+        
+            this.level++
+            console.log(this.secCount)
+            console.log(this.level)
+        } */
 
 
         this.pointCount.innerText = this.gamePoints
