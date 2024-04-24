@@ -20,13 +20,13 @@
 class Cloud {
     constructor(playScreen) {
         this.playScreen = playScreen
-        this.left = Math.floor(Math.random() * 300 + 50);
+        this.left = Math.floor(Math.random() * 500 );
         this.top = 0;
-        this.width = 100;
+        this.width = 300;
         this.height = 150;
 
         this.element = document.createElement('img');
-        this.element.src = './images/cloudM.png';
+        this.element.src = './images/nuvenz.png';
 
         this.element.style.position = 'absolute';
         this.element.style.width = `${this.width}px`
@@ -42,6 +42,40 @@ class Cloud {
     }
     move(){
         this.top += 3
+        this.updatePosition()
+    }
+    updatePosition(){
+        this.element.style.left = `${this.left}px`
+        this.element.style.top = `${this.top}px`
+      }
+}
+
+class PinkCloud {
+    constructor(playScreen) {
+        this.playScreen = playScreen
+        this.left = Math.floor(Math.random() * 500 );
+        this.top = 0;
+        this.width = 300;
+        this.height = 150;
+
+        this.element = document.createElement('img');
+        this.element.src = './images/pinkCloud.png';
+
+        this.element.style.position = 'absolute';
+        this.element.style.width = `${this.width}px`
+        this.element.style.height = `${this.height}px`
+
+        //position the player
+
+        this.element.style.left = `${this.left}px`
+        this.element.style.top = `${this.top}px`
+
+        this.playScreen.appendChild(this.element) //make it visible
+        
+    }
+    move(){
+        this.top += 0.90
+        this.left -= 0.25
         this.updatePosition()
     }
     updatePosition(){

@@ -5,6 +5,10 @@
   font-style: normal;
 }
 
+body{
+  background-color: lightblue;
+}
+
 #startScreenPannel{
   flex-direction: row;
   
@@ -32,7 +36,8 @@
     justify-content: space-around;
   
     align-items: center;
-    height: 600px;
+    height: 500px;
+    
     
 }
 
@@ -49,14 +54,18 @@
   align-content: stretch;
   -webkit-align-items: center;
   align-items: center;
-  width: 200px;
+  width: 150px;
+  padding-left: 3em;
 }
 
 #playScreen{
-  background-image: url('./images/sky.png');
-  background-size: cover;
+  /* /background-image: url('./images/sky.png'); */
+  background-size : cover; 
   background-repeat: no-repeat;
   position: relative;
+  box-sizing: border-box;
+  width: 700px;
+
 }
 
 
@@ -71,10 +80,10 @@
   justify-content: space-around;
   -webkit-align-content: space-between;
   align-content: space-between;
-  -webkit-align-items: flex-end;
-  align-items: flex-end;
+  -webkit-align-items: center;
+  align-items: center;
   width: 200px;
-  
+  padding-right: 80px;
 }
 /* 
 #sky{
@@ -90,4 +99,12 @@ width: 200px;
 
 h1,h3{
   font-size: 400%;
+}
+
+#logo{
+  padding-top: 15em;
+}
+
+#cloudLogo{
+  position: absolute;
 }

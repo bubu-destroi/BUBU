@@ -33,16 +33,17 @@ window.onload = function () {
   
       switch(key){
         case 'ArrowLeft' :
-          game.bubu.directionX = -3;
+          game.bubu.directionX = -7;
           break;
         case 'ArrowRight' :
-          game.bubu.directionX = 3;
+          game.bubu.directionX = 7;
           break;
         case 'ArrowUp' :
-          game.bubu.directionY = -3;
+          game.bubu.directionY = -7;
+          
           break;
         case 'ArrowDown' :
-          game.bubu.directionY = 3;
+          game.bubu.directionY = 7;
           break;
       }
     }

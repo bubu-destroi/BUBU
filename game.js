@@ -6,13 +6,15 @@ class Game{
         this.gameoverScreen = document.getElementById('gameoverScreen');
         this.bubu = new Bubu(this.container, this.playScreen, 200, 500, './images/bubu.png');
         this.lives = 9;
-        this.livesCountScreen = document.getElementById("livesCountScreen")
+        this.livesCountScreen = document.getElementById("livesCountScreen");
 
 
         this.height = 600;
-        this.width = 436;
+        this.width = 600;
         this.clouds = [];
+        this.pinkClouds= [];
         this.enemies = [];
+        this.chickens = [];
         this.totalPoints = 0;
         this.gamePoints = 0;
         this.pointCount = document.getElementById('pointCount');
@@ -61,6 +63,11 @@ class Game{
 
     update(){
         this.bubu.move()
+        if(this.cloudCount>10){
+            this.lives ++
+            this.cloudCount -= 10
+
+        }
 
 
         for(let i=0; i< this.clouds.length; i++){
@@ -91,11 +98,51 @@ class Game{
         }
 
 
-        if(Math.random()> 0.98 && this.clouds.length < 10 * this.level) {
+        if(Math.random()> 0.90 && this.clouds.length < 4 * (this.level * 2)) {
             this.clouds.push(new Cloud(this.playScreen))
         }
 
+
+
+
+
+        for(let i=0; i< this.pinkClouds.length; i++){
+            const pinkCloud = this.pinkClouds[i]
+
+            pinkCloud.move()
+
+            if(this.bubu.didCollide(pinkCloud)){
+
+                pinkCloud.element.remove()
+
+                this.pinkClouds.splice(i,1)
+              
+                this.cloudCount += 3
+                
+                 
+                
+                i--
+            }else if(pinkCloud.top > this.height){
+
+                pinkCloud.element.remove()
+                this.pinkClouds.splice(i,1)
+
+                i--
+            }
+        
+        }
+
+
+        if(Math.random()> 0.50 && this.pinkClouds.length < 1 * this.level) {
+            this.pinkClouds.push(new PinkCloud(this.playScreen))
+        }
+
        
+
+
+
+
+
 
 
         for(let i=0; i< this.enemies.length; i++){
@@ -118,15 +165,57 @@ class Game{
                 i--
             }
         }
-        if(this.level > 2){
-             if(Math.random()> 0.8 && this.enemies.length < 1 * this.level -1) {
+        /* if(this.level > 2){ */
+             /* if(Math.random()> 0.8 && this.enemies.length < 1 * this.level -1) {
+            this.enemies.push(new Enemy(this.playScreen))
+             }  */
+             if(Math.random()> 0.98 && this.enemies.length < 10 * this.level) {
             this.enemies.push(new Enemy(this.playScreen))
              } 
+
+
+
+            
+        for(let i=0; i< this.chickens.length; i++){
+            const chicken = this.chickens[i]
+
+            chicken.move()
+
+            if(this.bubu.didCollide(chicken)){
+
+                chicken.element.remove()
+
+                this.chickens.splice(i,1)
+                this.gamePoints --
+                this.lives -= 2
+            }else if(chicken.top > this.height){
+
+                chicken.element.remove()
+                this.chickens.splice(i,1)
+
+                i--
+            }
         }
+
+        if(this.level > 2){
+             if(Math.random()> 0.98 && this.chickens.length < 2 * (this.level-1)) {
+            this.chickens.push(new Chicken(this.playScreen))
+             } }
+
+
+
+
+
+
+
+
+
+
+      /*   } */
 
   
 
-        if(this.lives === 0){
+        if(this.lives >1){
             this.endGame()
         }
 
@@ -158,6 +247,10 @@ class Game{
         this.clouds = []
         this.enemies.forEach(enemy => enemy.element.remove())
         this.enemies = []
+        this.chickens.forEach(chicken => chicken.element.remove())
+        this.clouds = []
+        this.pinkClouds.forEach(pinkCloud => pinkCloud.element.remove())
+        this.pinkClouds = []
         this.bubu.element.remove()
 
         this.gameIsOver = true
