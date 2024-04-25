@@ -5,14 +5,20 @@ class Game{
         this.playScreen = document.getElementById('playScreen')
         this.gameoverScreen = document.getElementById('gameoverScreen');
         this.bubu = new Bubu(this.container, this.playScreen, 200, 500, './images/bubu.png');
+        this.sun = new Sun(this.playScreen, this.bubu)
         this.lives = 9;
         this.livesCountScreen = document.getElementById("livesCountScreen");
+
+        
 
 
         this.height = 600;
         this.width = 600;
         this.clouds = [];
         this.pinkClouds= [];
+        this.stars = [];
+
+
         this.enemies = [];
         this.chickens = [];
         this.totalPoints = 0;
@@ -31,7 +37,18 @@ class Game{
         this.secCount = this.gameLoopFrequency/60;
         this.secondsCountScreen = document.getElementById('secCount')
         this.timer = 0;
+
         this.level= 1;
+
+        this.levelScreen = document.getElementById('levelScreen')
+
+        this.levelCount = document.getElementById('levelCount')
+
+        this.blockEnemies = false;
+
+        this.bubuWokeUp = document.getElementById('bubuWokeUp')
+
+
 
     }
     start(){
@@ -43,6 +60,7 @@ class Game{
         /* show the gamescreen */
         this.container.style.display = 'flex';
         this.container.style.justifyContent = 'space-between';
+        this.gameoverScreen.style.display = 'none';
 
         /* should descend "HIT THE CLOUDS div" */
 
@@ -63,11 +81,9 @@ class Game{
 
     update(){
         this.bubu.move()
-        if(this.cloudCount>10){
-            this.lives ++
-            this.cloudCount -= 10
+        this.sun.move()
 
-        }
+        
 
 
         for(let i=0; i< this.clouds.length; i++){
@@ -103,9 +119,6 @@ class Game{
         }
 
 
-
-
-
         for(let i=0; i< this.pinkClouds.length; i++){
             const pinkCloud = this.pinkClouds[i]
 
@@ -118,8 +131,10 @@ class Game{
                 this.pinkClouds.splice(i,1)
               
                 this.cloudCount += 3
-                
-                 
+                     if(this.cloudCount>10){
+                        this.lives ++
+                        this.cloudCount -= 10
+                    }
                 
                 i--
             }else if(pinkCloud.top > this.height){
@@ -137,9 +152,54 @@ class Game{
             this.pinkClouds.push(new PinkCloud(this.playScreen))
         }
 
-       
 
 
+
+
+        for(let i=0; i< this.stars.length; i++){
+            const star = this.stars[i]
+
+            star.move()
+
+            if(this.bubu.didCollide(star)){
+
+                
+
+                star.element.remove()
+                this.blockEnemies = true;
+                this.enemies.forEach(enemy => enemy.element.remove())
+                this.enemies = []
+                this.chickens.forEach(chicken => chicken.element.remove())
+                this.chickens = []
+
+
+                setTimeout(() => {
+                    this.blockEnemies = false;
+                    
+                }, 2000)
+
+                this.stars = []
+                if (this.level>1){
+                    this.level -=1}
+                i--
+    
+            }else if(star.left > this.width){
+
+                star.element.remove()
+                this.stars = [] 
+
+                i--
+            }
+        
+        } 
+
+        
+
+        if(this.level > 2 && this.cloudCount>9 && this.stars.length === 0) {
+            this.stars.push(new Starz(this.playScreen))
+        }
+
+        
 
 
 
@@ -169,7 +229,7 @@ class Game{
              /* if(Math.random()> 0.8 && this.enemies.length < 1 * this.level -1) {
             this.enemies.push(new Enemy(this.playScreen))
              }  */
-             if(Math.random()> 0.98 && this.enemies.length < 10 * this.level) {
+             if(Math.random()> 0.98 && this.enemies.length < 10 * this.level && !this.blocked) {
             this.enemies.push(new Enemy(this.playScreen))
              } 
 
@@ -202,20 +262,9 @@ class Game{
             this.chickens.push(new Chicken(this.playScreen))
              } }
 
-
-
-
-
-
-
-
-
-
-      /*   } */
-
   
 
-        if(this.lives >1){
+        if(this.lives < 1){
             this.endGame()
         }
 
@@ -237,6 +286,8 @@ class Game{
 
         this.secondsCountScreen.innerText = this.secCount
 
+        this.levelCount.innerText = this.level
+
 
 
 
@@ -248,19 +299,20 @@ class Game{
         this.enemies.forEach(enemy => enemy.element.remove())
         this.enemies = []
         this.chickens.forEach(chicken => chicken.element.remove())
-        this.clouds = []
+        this.chickens = []
         this.pinkClouds.forEach(pinkCloud => pinkCloud.element.remove())
         this.pinkClouds = []
         this.bubu.element.remove()
 
         this.gameIsOver = true
 
-        this.gameScreen.style.display = 'none'
+        this.container.style.display = 'none' 
 
-        this.gameoverScreen.style.display = 'block'
-    }
+        this.gameoverScreen.style.display = 'flex'
 
+        this.bubuWokeUp.innerText = 'BUBU WOKE UP'
 
+        
 
-
+    } 
 }

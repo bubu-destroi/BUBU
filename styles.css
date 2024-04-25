@@ -10,7 +10,8 @@ body{
 }
 
 #startScreenPannel{
-  flex-direction: row;
+  display: flex;
+  flex-direction: column;
   
   flex-wrap: nowrap;
 
@@ -19,6 +20,18 @@ body{
   align-items: center;
   height: 600px;
   
+}
+
+#butt-on{
+  display: flex;
+  position: absolute;
+  align-self: center;
+  box-sizing: border-box;
+  background-color: none;
+  border-style: none;
+  font-size: xx-large;
+
+
 }
 
 #bubuDreams{
@@ -55,7 +68,7 @@ body{
   -webkit-align-items: center;
   align-items: center;
   width: 150px;
-  padding-left: 3em;
+  padding: 3em;
 }
 
 #playScreen{
@@ -83,7 +96,7 @@ body{
   -webkit-align-items: center;
   align-items: center;
   width: 200px;
-  padding-right: 80px;
+  padding: 3em;
 }
 /* 
 #sky{
@@ -105,6 +118,41 @@ h1,h3{
   padding-top: 15em;
 }
 
-#cloudLogo{
+
+  #gameoverScreen{
+  display: none;
+   
+ flex-direction: row; 
+  
+  flex-wrap: nowrap;
+
+  justify-content: center;
+  
+  align-items: center;
+  
+  height: 500px;
+
+} 
+
+#restartButton{
+  display: flex;
   position: absolute;
+  align-self: last baseline;
+  box-sizing: border-box;
+  background-color: none;
+  border-style: none;
+  font-size: xx-large;
+  
+}
+
+#bubuWokeUp{
+  display: flex;
+  position: fixed;
+  align-self: baseline;
+
+}
+
+#bubuAwake{
+  width: 600px;
+  
 }

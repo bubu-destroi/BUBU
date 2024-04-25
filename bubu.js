@@ -74,21 +74,21 @@ class Bubu {
 
 
 class Sun {
-    constructor(imgSrc) {
+    constructor(playScreen, bubu) {
 
-        this.container = container;
         this.playScreen = playScreen;
-        this.left = left;
-        this.top = top;
-        this.width = 10;
-        this.height = 10;
+        this.bubu = bubu;
+        this.left = this.bubu.left -50;
+        this.top = this.bubu.top + 10;
+        this.width = 100;
+        this.height = 100;
         this.directionX = 0;
         this.directionY = 0;
 
     
 
     this.element = document.createElement('img');
-    this.element.src = imgSrc;
+    this.element.src = "./images/sole.png";
 
     this.element.style.position = 'absolute';
     this.element.style.width = `${this.width}px`;
@@ -101,24 +101,10 @@ class Sun {
     }
 
 move(){
-    this.left += this.directionX
-    this.top += this.directionY
-
-    if(this.left < 10){
-        this.left=10
-    }
-    if(this.top < 10){
-        this.top = 10
-    }
-    if(this.left > this.playScreen.offsetWidth - this.width - 10){
-        this.left = this.playScreen.offsetWidth - this.width - 10
-    }
-
-    if(this.top > this.playScreen.offsetHeight - this.height - 10){
-        this.top = this.playScreen.offsetHeight - this.height - 10
-    }
-
-    
+    this.left = this.bubu.left + 10;
+    this.top = this.bubu.top - 400;
+  /*   this.left += this.directionX
+    this.top += this.directionY */
 
     this.updatePosition()
 }
@@ -128,7 +114,7 @@ updatePosition(){
   this.element.style.top = `${this.top}px`
 }
 
-}
+} 
     
   
 

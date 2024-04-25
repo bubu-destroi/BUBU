@@ -83,3 +83,39 @@ class PinkCloud {
         this.element.style.top = `${this.top}px`
       }
 }
+
+
+
+class Starz {
+    constructor(playScreen) {
+        this.playScreen = playScreen
+        this.left = -100
+        this.top = Math.floor(Math.random() * 500 );
+        this.width = 50;
+        this.height = 50;
+
+        this.element = document.createElement('img');
+        this.element.src = './images/estrelax.png';
+
+        this.element.style.position = 'absolute';
+        this.element.style.width = `${this.width}px`
+        this.element.style.height = `${this.height}px`
+
+        //position the player
+
+        this.element.style.left = `${this.left}px`
+        this.element.style.top = `${this.top}px`
+
+        this.playScreen.appendChild(this.element) //make it visible
+        
+    }
+    move(){
+        this.top += 7
+        this.left += 5
+        this.updatePosition()
+    }
+    updatePosition(){
+        this.element.style.left = `${this.left}px`
+        this.element.style.top = `${this.top}px`
+      }
+}

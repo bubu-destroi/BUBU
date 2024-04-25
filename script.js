@@ -9,6 +9,10 @@ window.onload = function () {
     buttOn.addEventListener("click", function () {
       startGame();
     });
+
+    restartButton.addEventListener("click", function () {
+      startGame();
+    });
   
     function startGame() {
       console.log("start game");
