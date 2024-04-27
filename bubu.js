@@ -28,18 +28,18 @@ class Bubu {
         this.left += this.directionX
         this.top += this.directionY
 
-        if(this.left < 10){
-            this.left=10
+        if(this.left < 1){
+            this.left=1
         }
-        if(this.top < 10){
-            this.top = 10
+        if(this.top < 1){
+            this.top = 1
         }
-        if(this.left > this.playScreen.offsetWidth - this.width - 10){
-            this.left = this.playScreen.offsetWidth - this.width - 10
+        if(this.left > this.playScreen.offsetWidth - this.width - 1){
+            this.left = this.playScreen.offsetWidth - this.width - 1
         }
 
-        if(this.top > this.playScreen.offsetHeight - this.height - 10){
-            this.top = this.playScreen.offsetHeight - this.height - 10
+        if(this.top > this.playScreen.offsetHeight - this.height - 1){
+            this.top = this.playScreen.offsetHeight - this.height - 1
         }
 
         
@@ -101,7 +101,7 @@ class Sun {
     }
 
 move(){
-    this.left = this.bubu.left + 10;
+    this.left = this.bubu.left -60;
     this.top = this.bubu.top - 400;
   /*   this.left += this.directionX
     this.top += this.directionY */

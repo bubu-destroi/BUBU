@@ -1,10 +1,12 @@
 class Enemy {
-    constructor(playScreen) {
+    constructor(playScreen, level) {
         this.playScreen = playScreen
         this.left = Math.floor(Math.random() * 400 + 50);
         this.top = Math.floor(Math.random() * 100 );
         this.width = 40;
         this.height = 60;
+
+        this.level = level;
 
         this.element = document.createElement('img');
         this.element.src = './images/ganso.png';
@@ -24,6 +26,12 @@ class Enemy {
     move(){
         this.top += 2
         this.left += 1
+        if(this.level>3){
+            this.top +4
+            this.left +=3
+        }
+
+
         this.updatePosition()
     }
     updatePosition(){
@@ -34,12 +42,14 @@ class Enemy {
 
 
 class Chicken {
-    constructor(playScreen) {
+    constructor(playScreen, level) {
         this.playScreen = playScreen
         this.left = Math.floor(Math.random() * 400 + 50);
         this.top = Math.floor(Math.random() * 100 );
         this.width = 50;
         this.height = 70;
+
+        this.level = level;
 
         this.element = document.createElement('img');
         this.element.src = './images/racas-galinha.png';
@@ -59,6 +69,10 @@ class Chicken {
     move(){
         this.top += 3
         this.left -= 1
+        if(this.level>5){
+            this.top +7
+            this.left -=2
+        }
         this.updatePosition()
     }
     updatePosition(){
@@ -68,3 +82,10 @@ class Chicken {
    
 
 }
+
+
+/* class DuckFamily{
+    constructor(playScreen,family, level){
+        
+    }
+} */

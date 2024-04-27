@@ -9,14 +9,18 @@ class Game{
         this.lives = 9;
         this.livesCountScreen = document.getElementById("livesCountScreen");
 
-        
 
+        this.hitTheClouds = new HitTheCloudz(this.playScreen);
 
         this.height = 600;
-        this.width = 600;
+        this.width = 800;
+
+
         this.clouds = [];
         this.pinkClouds= [];
         this.stars = [];
+        this.cloud30= 0;
+        this.blueStars = [];
 
 
         this.enemies = [];
@@ -53,6 +57,7 @@ class Game{
     }
     start(){
         this.startScreenPannel.style.display = 'none';
+
         this.playScreen.style.width = `${this.width}px`;
         this.playScreen.style.height = `${this.height}px`;
         /* removing startScreenPannel */
@@ -63,6 +68,7 @@ class Game{
         this.gameoverScreen.style.display = 'none';
 
         /* should descend "HIT THE CLOUDS div" */
+      
 
         /* start loop */
         this.gameIntervalId = setInterval(()=>{
@@ -80,11 +86,15 @@ class Game{
     }
 
     update(){
+        this.hitTheClouds.move()
         this.bubu.move()
         this.sun.move()
+        if(this.cloud30>30){
+            this.cloud30 -=29
+        }
 
         
-
+/* BEGIN NORMAL CLOUDS -------------------------------*/
 
         for(let i=0; i< this.clouds.length; i++){
             const cloud = this.clouds[i]
@@ -98,6 +108,7 @@ class Game{
                 this.clouds.splice(i,1)
                 this.gamePoints += 5
                 this.cloudCount ++
+                this.cloud30 ++
                 if(this.cloudCount > 10){
                     this.lives ++
                     this.cloudCount -= 10
@@ -112,13 +123,14 @@ class Game{
             }
         
         }
-
-
         if(Math.random()> 0.90 && this.clouds.length < 4 * (this.level * 2)) {
             this.clouds.push(new Cloud(this.playScreen))
         }
 
+/* END NORMAL CLOUDS------------------------------------ */
 
+
+/* BEGIN PINK CLOUDS------------------------------------ */
         for(let i=0; i< this.pinkClouds.length; i++){
             const pinkCloud = this.pinkClouds[i]
 
@@ -131,6 +143,7 @@ class Game{
                 this.pinkClouds.splice(i,1)
               
                 this.cloudCount += 3
+                this.cloud30 ++
                      if(this.cloudCount>10){
                         this.lives ++
                         this.cloudCount -= 10
@@ -147,14 +160,14 @@ class Game{
         
         }
 
-
         if(Math.random()> 0.50 && this.pinkClouds.length < 1 * this.level) {
             this.pinkClouds.push(new PinkCloud(this.playScreen))
         }
 
+/* END PINK CLOUDS---------------------------------- */
 
 
-
+/* BEGIN STARS -------------------------------------*/
 
         for(let i=0; i< this.stars.length; i++){
             const star = this.stars[i]
@@ -163,15 +176,15 @@ class Game{
 
             if(this.bubu.didCollide(star)){
 
-                
-
                 star.element.remove()
                 this.blockEnemies = true;
                 this.enemies.forEach(enemy => enemy.element.remove())
                 this.enemies = []
                 this.chickens.forEach(chicken => chicken.element.remove())
                 this.chickens = []
-
+                if(this.cloud30>29){
+                    this.cloud30 -=29
+                }
 
                 setTimeout(() => {
                     this.blockEnemies = false;
@@ -179,10 +192,10 @@ class Game{
                 }, 2000)
 
                 this.stars = []
-                if (this.level>1){
-                    this.level -=1}
-                i--
-    
+                    /* if (this.level>1){
+                        this.level -=1}
+                    i--
+        */
             }else if(star.left > this.width){
 
                 star.element.remove()
@@ -193,16 +206,61 @@ class Game{
         
         } 
 
-        
-
-        if(this.level > 2 && this.cloudCount>9 && this.stars.length === 0) {
+        if(this.level > 0 && this.cloud30>29 && this.stars.length === 0) {
             this.stars.push(new Starz(this.playScreen))
         }
 
+        /* END STARS -----------------------------------------*/
+
+
+
+        for(let i=0; i< this.blueStars.length; i++){
+            const blueStar = this.blueStars[i]
+
+            blueStar.move()
+
+            if(this.bubu.didCollide(blueStar)){
+
+
+                blueStar.element.remove()
+                this.blockEnemies = true;
+                this.enemies.forEach(enemy => enemy.element.remove())
+                this.enemies = []
+                this.chickens.forEach(chicken => chicken.element.remove())
+                this.chickens = []
+
+               
+                setTimeout(() => {
+                    this.blockEnemies = false;
+                    this.bubu.element.style.width = 100;
+                    this.bubu.element.style.height=100;
+
+                }, 5000)
+
+                this.blueStars = []
+                    /* if (this.level>1){
+                        this.level -=1}
+                    i--
+        */
+            }else if(blueStar.left > this.width){
+
+                blueStar.element.remove()
+                this.blueStars = [] 
+
+                i--
+            }
         
+        } 
+
+        if(this.level > 1  && this.blueStars.length === 0) {
+            this.blueStars.push(new BlueStar(this.playScreen))
+        }
 
 
 
+
+
+        /* BEGIN ENEMIES------------------------------------- */
 
 
         for(let i=0; i< this.enemies.length; i++){
@@ -216,7 +274,7 @@ class Game{
 
                 this.enemies.splice(i,1)
                 this.gamePoints --
-                this.lives --
+                this.lives -=2
             }else if(enemy.top > this.height){
 
                 enemy.element.remove()
@@ -229,12 +287,19 @@ class Game{
              /* if(Math.random()> 0.8 && this.enemies.length < 1 * this.level -1) {
             this.enemies.push(new Enemy(this.playScreen))
              }  */
-             if(Math.random()> 0.98 && this.enemies.length < 10 * this.level && !this.blocked) {
+
+             if (this.timer > 10){
+                    if(Math.random()> 0.98 && this.enemies.length < 10 * this.level && !this.blocked) {
             this.enemies.push(new Enemy(this.playScreen))
              } 
+}
+             /* END ENEMIES--------------------------------------------- */
 
 
 
+
+
+            /* BEGIN CHICKENS ---------------------------------------------*/
             
         for(let i=0; i< this.chickens.length; i++){
             const chicken = this.chickens[i]
@@ -247,20 +312,23 @@ class Game{
 
                 this.chickens.splice(i,1)
                 this.gamePoints --
-                this.lives -= 2
-            }else if(chicken.top > this.height){
+                this.lives -= 3
+            }else if(chicken.top > this.height || chicken.left < this.left){
 
                 chicken.element.remove()
                 this.chickens.splice(i,1)
-
+ 
                 i--
             }
         }
 
         if(this.level > 2){
-             if(Math.random()> 0.98 && this.chickens.length < 2 * (this.level-1)) {
-            this.chickens.push(new Chicken(this.playScreen))
+             if(Math.random()> 0.98 && this.chickens.length < 4 * (this.level-1)) {
+            this.chickens.push(new Chicken(this.playScreen, this.level))
              } }
+
+
+             /* END CHICKENS ---------------------------------*/
 
   
 
@@ -303,6 +371,7 @@ class Game{
         this.pinkClouds.forEach(pinkCloud => pinkCloud.element.remove())
         this.pinkClouds = []
         this.bubu.element.remove()
+        this.sun.element.remove()
 
         this.gameIsOver = true
 

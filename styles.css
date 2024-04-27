@@ -49,7 +49,7 @@ body{
     justify-content: space-around;
   
     align-items: center;
-    height: 500px;
+    height: 600px;
     
     
 }
@@ -68,7 +68,7 @@ body{
   -webkit-align-items: center;
   align-items: center;
   width: 150px;
-  padding: 3em;
+  padding-left: 30px;
 }
 
 #playScreen{
@@ -95,7 +95,7 @@ body{
   align-content: space-between;
   -webkit-align-items: center;
   align-items: center;
-  width: 200px;
+  width: 400px;
   padding: 3em;
 }
 /* 
