@@ -156,3 +156,28 @@ h1,h3{
   width: 600px;
   
 }
+
+
+@keyframes increaseDicrease {
+  0%{
+    width : 100 px;
+    height : 100 px; 
+  }
+  50% { 
+    width : 800 px;
+    height : 600 px; 
+
+  }
+  100%{
+    width : 100 px;
+    height : 100 px; 
+
+  }
+  
+}
+
+.animate-bubu {
+  animation: increaseDicrease;
+  animation-duration: 4s;
+}
+

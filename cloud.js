@@ -1,23 +1,5 @@
-/* class Cloud extends Things{
-    constructor (picture){
 
-        super (direction, size, speed)
-
-        const cloudPic = ['../BUBU/images/cloudS.png','../BUBU/images/cloudM.png']
-
-        const randomNr = Math.floor(Math.random() >0.99 * cloudPic.length );
-
-        this.picture = cloudPic[randomNr]
-
-        this.element = document.createElement(`${this.picture}`)
-
-        
-
-    }
-
-} */
-
-class Cloud {
+class Cloud{
     constructor(playScreen) {
         this.playScreen = playScreen
         this.left = Math.floor(Math.random() * 500 );
@@ -41,7 +23,8 @@ class Cloud {
         
     }
     move(){
-        this.top += 3
+        this.top += 2
+        this.left +=1
         this.updatePosition()
     }
     updatePosition(){
@@ -49,6 +32,48 @@ class Cloud {
         this.element.style.top = `${this.top}px`
       }
 }
+
+
+
+class CloudLeft {
+    constructor(playScreen) {
+        this.playScreen = playScreen
+        this.left = Math.floor(Math.random() * 500 );
+        this.top = 0;
+        this.width = 300;
+        this.height = 150;
+
+        this.element = document.createElement('img');
+        this.element.src = './images/nuvenz.png';
+
+        this.element.style.position = 'absolute';
+        this.element.style.width = `${this.width}px`
+        this.element.style.height = `${this.height}px`
+
+        //position the player
+
+        this.element.style.left = `${this.left}px`
+        this.element.style.top = `${this.top}px`
+
+        this.playScreen.appendChild(this.element) //make it visible
+        
+    }
+    move(){
+        this.top += 2
+        this.left -=1 
+        this.updatePosition()
+    }
+    updatePosition(){
+        this.element.style.left = `${this.left}px`
+        this.element.style.top = `${this.top}px`
+      }
+}
+
+
+
+
+
+
 
 class PinkCloud {
     constructor(playScreen) {
@@ -83,6 +108,7 @@ class PinkCloud {
         this.element.style.top = `${this.top}px`
       }
 }
+
 
 
 
@@ -153,7 +179,7 @@ class BlueStar {
         
             this.left +=20
             
-        }, 4000)
+        }, 2000)
 
         if (this.left > this.playScreen.rigth){
             this.element.remove()

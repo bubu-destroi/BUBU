@@ -78,8 +78,8 @@ class Sun {
 
         this.playScreen = playScreen;
         this.bubu = bubu;
-        this.left = this.bubu.left -50;
-        this.top = this.bubu.top + 10;
+        this.left = this.bubu.left -10;
+        this.top = 100;
         this.width = 100;
         this.height = 100;
         this.directionX = 0;
@@ -101,8 +101,21 @@ class Sun {
     }
 
 move(){
-    this.left = this.bubu.left -60;
-    this.top = this.bubu.top - 400;
+
+    if(this.bubu.directionX === -7 ){
+    this.left += 2;}
+    if (this.bubu.directionX === 7){
+        this.left -=2
+    }
+    if(this.bubu.directionY === -7 ){
+    this.top += 2}
+    if (this.bubu.directionY === 7){
+        this.top -= 2
+    }
+
+
+/* 
+    this.top = this.bubu.top - 400; */
   /*   this.left += this.directionX
     this.top += this.directionY */
 

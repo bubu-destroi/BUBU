@@ -69,7 +69,7 @@ class Chicken {
     move(){
         this.top += 3
         this.left -= 1
-        if(this.level>5){
+        if(this.level>7){
             this.top +7
             this.left -=2
         }
@@ -84,8 +84,3 @@ class Chicken {
 }
 
 
-/* class DuckFamily{
-    constructor(playScreen,family, level){
-        
-    }
-} */

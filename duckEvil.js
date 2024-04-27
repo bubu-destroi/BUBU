@@ -1,15 +1,15 @@
 
 
-class HitTheCloudz {
+class DuckFamily {
     constructor(playScreen) {
         this.playScreen = playScreen
-        this.left = 200;
-        this.top = 0;
+        this.left = Math.floor(Math.random() * 800 );
+        this.top = -384;
         this.width = 400;
-        this.height = 300;
+        this.height = 384;
 
         this.element = document.createElement('img');
-        this.element.src = './images/hit the clouds.png';
+        this.element.src = './images/PATA-verde.png';
 
         this.element.style.position = 'absolute';
         this.element.style.width = `${this.width}px`
@@ -24,7 +24,7 @@ class HitTheCloudz {
         
     }
     move(){
-        this.top += 2
+        this.top += 1
         if(this.top > 800){
             this.top = 800
             this.element.remove()
