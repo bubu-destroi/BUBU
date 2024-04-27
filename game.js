@@ -96,8 +96,8 @@ class Game{
         this.hitTheClouds.move()
         this.bubu.move()
         this.sun.move()
-        if(this.cloud30>30){
-            this.cloud30 -=29
+        if(this.cloud30>60){
+            this.cloud30 -=60
         } 
 
         
@@ -217,7 +217,7 @@ class Game{
         
         } 
 
-        if(this.level > 0 && this.cloud30>29 && this.stars.length === 0) {
+        if(this.level > 0 && this.cloud30>60 && this.stars.length === 0) {
             this.stars.push(new Starz(this.playScreen))
         }
 
@@ -362,7 +362,7 @@ class Game{
                 }
             }
     
-            if(this.level> 0){
+            if(this.level> 5){
 
                  if(Math.random()> 0.99 && this.ducks.length < 1 * 1 && !this.blockDuck) {
                 this.ducks.push(new DuckFamily(this.playScreen, this.level))

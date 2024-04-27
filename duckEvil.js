@@ -3,7 +3,7 @@
 class DuckFamily {
     constructor(playScreen) {
         this.playScreen = playScreen
-        this.left = Math.floor(Math.random() * 800 );
+        this.left = Math.floor(Math.random()  * 400 );
         this.top = -384;
         this.width = 400;
         this.height = 384;
