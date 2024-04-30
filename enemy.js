@@ -1,12 +1,22 @@
 class Enemy {
     constructor(playScreen, level) {
         this.playScreen = playScreen
-        this.left = Math.floor(Math.random() * 400 + 50);
+        this.left = Math.floor(Math.random() * 600 + 50);
         this.top = Math.floor(Math.random() * 100 );
         this.width = 40;
         this.height = 60;
 
+
         this.level = level;
+
+
+        this.way = 1;
+        if(level>4){
+           this.way=Math.floor(Math.random() * (3 - -2) + -2 )
+           
+        }
+        
+        console.log(this.way)
 
         this.element = document.createElement('img');
         this.element.src = './images/ganso.png';
@@ -25,11 +35,8 @@ class Enemy {
     }
     move(){
         this.top += 2
-        this.left += 1
-        if(this.level>3){
-            this.top +4
-            this.left +=3
-        }
+        this.left += this.way
+        
 
 
         this.updatePosition()
