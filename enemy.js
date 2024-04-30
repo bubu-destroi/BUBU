@@ -58,6 +58,12 @@ class Chicken {
 
         this.level = level;
 
+        this.way = 1;
+        if(level>5){
+           this.way=Math.floor(Math.random() * (3 - -2) + -2 )
+           
+        }
+
         this.element = document.createElement('img');
         this.element.src = './images/racas-galinha.png';
 
@@ -75,10 +81,9 @@ class Chicken {
     }
     move(){
         this.top += 3
-        this.left -= 1
+        this.left -= this.way
         if(this.level>7){
             this.top +7
-            this.left -=2
         }
         this.updatePosition()
     }

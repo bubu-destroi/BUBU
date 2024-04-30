@@ -11,6 +11,9 @@ class Game{
 
 
         this.hitTheClouds = new HitTheCloudz(this.playScreen);
+        this.every30cloud = new Every30Cloud(this.playScreen);
+        this.birdsHateBubu = new BirdsHateBubu(this.playScreen);
+        this.redStarClears = new RedStar(this.playScreen);
 
         this.height = 600;
         this.width = 800;
@@ -101,6 +104,19 @@ class Game{
             this.cloud60 -=59
         } 
 
+        if(this.secCount>1){
+            this.every30cloud.move()
+        }
+
+        if(this.secCount>8){
+            this.birdsHateBubu.move()
+        }
+
+        if(this.level===2 && this.cloud60>50){
+            this.redStarClears.move()
+
+        }
+
         
 
         
@@ -135,7 +151,7 @@ class Game{
         
         }
         if(this.secCount>2){
-        if(Math.random()> 0.90 && this.clouds.length < 4 * (this.level * 2)) {
+        if(Math.random()> 0.99 && this.clouds.length < 4 * this.level) {
             this.clouds.push(new Cloud(this.playScreen))
             this.clouds.push(new CloudLeft(this.playScreen))
         }}
@@ -173,7 +189,7 @@ class Game{
         
         }
         if(this.secCount>4){
-        if(Math.random()> 0.90 && this.pinkClouds.length < 1 * this.level) {
+        if(Math.random()> 0.99 && this.pinkClouds.length < 1 * this.level) {
             this.pinkClouds.push(new PinkCloud(this.playScreen))
         }}
 
@@ -202,7 +218,7 @@ class Game{
                 setTimeout(() => {
                     this.blockEnemies = false;
                     
-                }, 2000)
+                }, 1000)
 
                 this.stars = []
                     /* if (this.level>1){
@@ -218,6 +234,7 @@ class Game{
             }
         
         } 
+      
 
         if(this.level > 1 && this.cloud60>59 && this.stars.length === 0) {
             this.stars.push(new Starz(this.playScreen))
@@ -423,6 +440,11 @@ class Game{
        
         this.bubu.element.remove()
         this.sun.element.remove()
+        this.hitTheClouds.element.remove()
+        this.birdsHateBubu.element.remove()
+        this.every30cloud.element.remove()
+        this.redStarClears.element.remove()
+
 
         this.stars.forEach(star => star.element.remove())
         this.stars = []
