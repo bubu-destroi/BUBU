@@ -5,8 +5,8 @@ class Bubu {
         this.playScreen = playScreen;
         this.left = left;
         this.top = top;
-        this.width = 100;
-        this.height = 100;
+        this.width = 40;
+        this.height = 80;
         this.directionX = 0;
         this.directionY = 0;
 
@@ -80,8 +80,8 @@ class Sun {
         this.bubu = bubu;
         this.left = this.bubu.left -10;
         this.top = 100;
-        this.width = 100;
-        this.height = 100;
+        this.width = 70;
+        this.height = 70;
         this.directionX = 0;
         this.directionY = 0;
 

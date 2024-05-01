@@ -111,6 +111,43 @@ class PinkCloud {
 
 
 
+class MagiCloud {
+    constructor(playScreen) {
+        this.playScreen = playScreen
+        this.left = Math.floor(Math.random() * 500 );
+        this.top = 0;
+        this.width = 400;
+        this.height = 200;
+
+        this.element = document.createElement('img');
+        this.element.src = './images/magi1lifecloud.png';
+
+        this.element.style.position = 'absolute';
+        this.element.style.width = `${this.width}px`
+        this.element.style.height = `${this.height}px`
+
+        //position the player
+
+        this.element.style.left = `${this.left}px`
+        this.element.style.top = `${this.top}px`
+
+        this.playScreen.appendChild(this.element) //make it visible
+        
+    }
+    move(){
+        this.top += 0.90
+        this.updatePosition()
+    }
+    updatePosition(){
+        this.element.style.left = `${this.left}px`
+        this.element.style.top = `${this.top}px`
+      }
+}
+
+
+
+
+
 
 class Starz {
     constructor(playScreen) {
@@ -147,7 +184,7 @@ class Starz {
 }
 
 
-class BlueStar {
+class BlueStar{
     constructor(playScreen) {
         this.playScreen = playScreen
         this.left =  Math.floor(Math.random() * 500 );
@@ -185,6 +222,42 @@ class BlueStar {
             this.element.remove()
         }
         this.updatePosition()
+    }
+    updatePosition(){
+        this.element.style.left = `${this.left}px`
+        this.element.style.top = `${this.top}px`
+      }
+}
+
+
+class Moises {
+    constructor(playScreen) {
+        this.playScreen = playScreen
+        this.left = Math.floor(Math.random() * 700);
+        this.top = -300;
+        this.width = 100;
+        
+
+        this.element = document.createElement('img');
+        this.element.src = './images/moises.png';
+
+        this.element.style.position = 'absolute';
+        this.element.style.width = `${this.width}px`
+        this.element.style.height = `${this.height}px`
+
+        //position the player
+
+        this.element.style.left = `${this.left}px`
+        this.element.style.top = `${this.top}px`
+
+        this.playScreen.appendChild(this.element) //make it visible
+        
+    }
+    move(){
+        this.top += 2
+
+        this.updatePosition()
+
     }
     updatePosition(){
         this.element.style.left = `${this.left}px`

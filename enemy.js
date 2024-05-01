@@ -2,9 +2,9 @@ class Enemy {
     constructor(playScreen, level) {
         this.playScreen = playScreen
         this.left = Math.floor(Math.random() * 600 + 50);
-        this.top = Math.floor(Math.random() * 100 );
-        this.width = 40;
-        this.height = 60;
+        this.top = -40;
+        this.width = 50;
+        this.height = 40;
 
 
         this.level = level;
@@ -59,7 +59,7 @@ class Chicken {
         this.level = level;
 
         this.way = 1;
-        if(level>5){
+        if(level>6){
            this.way=Math.floor(Math.random() * (3 - -2) + -2 )
            
         }
@@ -83,7 +83,7 @@ class Chicken {
         this.top += 3
         this.left -= this.way
         if(this.level>7){
-            this.top +7
+            this.top +6
         }
         this.updatePosition()
     }
