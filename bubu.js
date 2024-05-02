@@ -28,18 +28,18 @@ class Bubu {
         this.left += this.directionX
         this.top += this.directionY
 
-        if(this.left < 1){
-            this.left=1
+        if(this.left < 0){
+            this.left=0
         }
-        if(this.top < 1){
-            this.top = 1
+        if(this.top < 0){
+            this.top = 0
         }
-        if(this.left > this.playScreen.offsetWidth - this.width - 1){
-            this.left = this.playScreen.offsetWidth - this.width - 1
+        if(this.left > this.playScreen.offsetWidth - this.width ){
+            this.left = this.playScreen.offsetWidth - this.width 
         }
 
-        if(this.top > this.playScreen.offsetHeight - this.height - 1){
-            this.top = this.playScreen.offsetHeight - this.height - 1
+        if(this.top > this.playScreen.offsetHeight - this.height ){
+            this.top = this.playScreen.offsetHeight - this.height 
         }
 
         

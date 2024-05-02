@@ -8,6 +8,8 @@ class Game{
         this.sun = new Sun(this.playScreen, this.bubu)
         this.lives = 9;
         this.livesCountScreen = document.getElementById("livesCountScreen");
+        this.gameoverContainer = document.getElementById("gameoverContainer");
+        this.scoresScreen = document.getElementById("scoresScreen");
 
 
         this.hitTheClouds = new HitTheCloudz(this.playScreen);
@@ -15,8 +17,10 @@ class Game{
         this.birdsHateBubu = new BirdsHateBubu(this.playScreen);
         this.redStarClears = new RedStar(this.playScreen);
         this.blueStarInfo = new BlueStarInfo(this.playScreen);
+        this.moisesInfo = new MoisesInfo(this.playScreen);
+        this.babyInfo = new BabyInfo(this.playScreen);
 
-        this.height = 600;
+        this.height = 700;
         this.width = 800;
 
 
@@ -34,12 +38,13 @@ class Game{
 
         this.ducks = [];
 
+        this.babyDucks = [];
+
 
 
         this.totalPoints = 0;
         this.gamePoints = 0;
         this.pointCount = document.getElementById('pointCount');
-
 
         this.cloudCount = 0;
         this.cloudh1 = document.getElementById('cloudCount')
@@ -52,6 +57,9 @@ class Game{
         this.gameLoopFrequency = Math.floor(1000/60);
         this.secCount = this.gameLoopFrequency/60;
         this.secondsCountScreen = document.getElementById('secCount')
+
+
+        
         this.timer = 0;
 
         this.level= 1;
@@ -59,6 +67,12 @@ class Game{
         this.levelScreen = document.getElementById('levelScreen')
 
         this.levelCount = document.getElementById('levelCount')
+
+        this.levelFinalh1 =document.getElementById("levelFinal")
+
+        this.secCountFinalh1 = document.getElementById("secCountFinal")
+
+        this.pointCountFinalh1 = document.getElementById("pointCountFinal")
 
         this.blockEnemies = false;
         this.blockDuck = false;
@@ -123,6 +137,15 @@ class Game{
 
         if(this.secCount>115){
             this.blueStarInfo.move()
+        }
+
+        if(this.secCount>132){
+            this.moisesInfo.move()
+
+        }
+
+        if(this.level>5){
+            this.babyInfo.move()
         }
 
 
@@ -435,6 +458,42 @@ if(Math.random()> 0.99 && this.magicClouds.length < 1 ) {
                 
                 }
 /* --------------------END OF DUCK------------------- */
+
+/* BABY DUCKLINGS */
+
+for(let i=0; i< this.babyDucks.length; i++){
+    const baby = this.babyDucks[i]
+
+    baby.move()
+
+    if(this.bubu.didCollide(baby)){
+
+        baby.element.remove()
+        this.babyDucks.splice(i,1)
+        this.gamePoints --
+        this.lives -= 4
+    }else if(baby.top > this.height){
+
+        baby.element.remove()
+        this.babyDucks.splice(i,1)
+
+        i--
+    }
+}
+
+if(this.level> 5){
+
+     if(Math.random()> 0.99 && this.babyDucks.length < 3 && !this.blockDuck) {
+    this.babyDucks.push(new BabyDuck(this.playScreen))
+     }
+    
+    
+    }
+
+
+
+/* END BABY DUCKLINGS */
+
 /* --------------------MOISES------------------- */
 
 
@@ -454,6 +513,8 @@ if(Math.random()> 0.99 && this.magicClouds.length < 1 ) {
                     this.chickens = []
                     this.ducks.forEach(duck => duck.element.remove())
                     this.ducks = []
+                    this.babyDucks.forEach(baby => baby.element.remove())
+                    this.babyDucks = []
                     
                     setTimeout(() => {
                         this.blockDuck = false
@@ -518,6 +579,8 @@ if(Math.random()> 0.99 && this.magicClouds.length < 1 ) {
 
 
 
+
+
     }
 
     endGame(){
@@ -533,6 +596,10 @@ if(Math.random()> 0.99 && this.magicClouds.length < 1 ) {
         this.chickens = []
         this.ducks.forEach(duck => duck.element.remove())
         this.ducks = []
+        this.babyDucks.forEach(baby => baby.element.remove())
+        this.babyDucks = []
+        this.moiseses.forEach(moises => moises.element.remove())
+        this.moiseses = []
 
        
         this.bubu.element.remove()
@@ -541,6 +608,8 @@ if(Math.random()> 0.99 && this.magicClouds.length < 1 ) {
         this.birdsHateBubu.element.remove()
         this.every30cloud.element.remove()
         this.redStarClears.element.remove()
+        this.moisesInfo.element.remove()
+        this.babyInfo.element.remove()
 
 
         this.stars.forEach(star => star.element.remove())
@@ -556,7 +625,17 @@ if(Math.random()> 0.99 && this.magicClouds.length < 1 ) {
 
         this.gameoverScreen.style.display = 'flex'
 
+        this.gameoverContainer.style.display = 'flex'
+
+        this.scoresScreen.style.display = 'flex'
+
         this.bubuWokeUp.innerText = 'BUBU WOKE UP'
+
+        this.levelFinalh1.innerText = this.level
+
+        this.secCountFinalh1.innerText = this.secCount
+
+        this.pointCountFinalh1.innerText = this.gamePoints
 
         
 
