@@ -179,7 +179,7 @@ h1,h3{
   background-image: url(./images/bubu.png);
   background-size: contain;
   background-repeat: no-repeat;
-  width: 200px;
+  width: 150px;
 }
 
 #cloudScreen{
@@ -207,7 +207,7 @@ h1,h3{
 
 #scoresScreen{
 
-  display: flex;
+  display: none;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: stretch;

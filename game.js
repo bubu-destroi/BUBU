@@ -93,6 +93,7 @@ class Game{
         this.container.style.display = 'flex';
         this.container.style.justifyContent = 'space-between';
         this.gameoverScreen.style.display = 'none';
+        this.scoresScreen.style.display = "none"
 
         /* should descend "HIT THE CLOUDS div" */
       
