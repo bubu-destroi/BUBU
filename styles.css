@@ -68,7 +68,8 @@ body{
   -webkit-align-items: center;
   align-items: center;
   width: 150px;
-  padding-left: 30px;
+  padding-left: 50px;
+
 }
 
 #playScreen{
@@ -89,6 +90,7 @@ body{
   justify-content: stretch;
   align-items: stretch;
   width: 100px;
+  padding-right: 50px;
 }
 /* 
 #sky{

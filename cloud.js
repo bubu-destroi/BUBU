@@ -116,11 +116,11 @@ class MagiCloud {
         this.playScreen = playScreen
         this.left = Math.floor(Math.random() * 500 );
         this.top = 0;
-        this.width = 400;
-        this.height = 200;
+        this.width = 30;
+        this.height = 30;
 
         this.element = document.createElement('img');
-        this.element.src = './images/magi1lifecloud.png';
+        this.element.src = './images/maria.png';
 
         this.element.style.position = 'absolute';
         this.element.style.width = `${this.width}px`
@@ -135,7 +135,7 @@ class MagiCloud {
         
     }
     move(){
-        this.top += 0.90
+        this.top += 1.5
         this.updatePosition()
     }
     updatePosition(){

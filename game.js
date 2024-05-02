@@ -19,6 +19,7 @@ class Game{
         this.blueStarInfo = new BlueStarInfo(this.playScreen);
         this.moisesInfo = new MoisesInfo(this.playScreen);
         this.babyInfo = new BabyInfo(this.playScreen);
+        this.cookieInfo = new CookieInfo(this.playScreen);
 
         this.height = 700;
         this.width = 800;
@@ -149,6 +150,10 @@ class Game{
             this.babyInfo.move()
         }
 
+        if(this.level>7){
+        this.cookieInfo.move()
+        }
+
 
 
    
@@ -230,7 +235,7 @@ class Game{
 
 /* END PINK CLOUDS---------------------------------- */
 
-/* for(let i=0; i< this.magicClouds.length; i++){
+ for(let i=0; i< this.magicClouds.length; i++){
     const magicCloud = this.magicClouds[i]
 
    magicCloud.move()
@@ -241,8 +246,7 @@ class Game{
 
         this.magicClouds.splice(i,1)
       
-        this.cloudCount += 1
-        this.cloud60 ++
+        
         this.lives ++
         
         i--
@@ -255,12 +259,12 @@ class Game{
     }
 
 }
-if(this.level>3){
-if(Math.random()> 0.99 && this.magicClouds.length < 1 ) {
+if(this.level> 7){
+if(this.secCount%30 === 0 && this.magicClouds.length ===0) {
     this.magicClouds.push(new MagiCloud(this.playScreen))
 }}
 
- */
+
 
 
 
@@ -392,8 +396,13 @@ if(Math.random()> 0.99 && this.magicClouds.length < 1 ) {
                     if(Math.random()> 0.98 && this.enemies.length < 10 * this.level && !this.blockEnemies) {
             this.enemies.push(new Enemy(this.playScreen, this.level))
              }
+            }
 
-}
+            if (this.level > 10){
+                    if(Math.random()> 0.98 && this.enemies.length < 15 * this.level && !this.blockEnemies) {
+            this.enemies.push(new Enemy(this.playScreen, this.level))
+             }
+            }
              /* END ENEMIES--------------------------------------------- */
 
 
@@ -426,6 +435,8 @@ if(Math.random()> 0.99 && this.magicClouds.length < 1 ) {
              if(Math.random()> 0.98 && this.chickens.length < 4 * (this.level -1)) {
             this.chickens.push(new Chicken(this.playScreen, this.level))
              } }
+
+             
 
 
              /* END CHICKENS ---------------------------------*/
@@ -462,34 +473,41 @@ if(Math.random()> 0.99 && this.magicClouds.length < 1 ) {
 
 /* BABY DUCKLINGS */
 
-for(let i=0; i< this.babyDucks.length; i++){
-    const baby = this.babyDucks[i]
+        for(let i=0; i< this.babyDucks.length; i++){
+            const baby = this.babyDucks[i]
 
-    baby.move()
+            baby.move()
 
-    if(this.bubu.didCollide(baby)){
+            if(this.bubu.didCollide(baby)){
 
-        baby.element.remove()
-        this.babyDucks.splice(i,1)
-        this.gamePoints --
-        this.lives -= 4
-    }else if(baby.top > this.height){
+                baby.element.remove()
+                this.babyDucks.splice(i,1)
+                this.gamePoints --
+                this.lives -= 4
+            }else if(baby.top > this.height){
 
-        baby.element.remove()
-        this.babyDucks.splice(i,1)
+                baby.element.remove()
+                this.babyDucks.splice(i,1)
 
-        i--
-    }
-}
+                i--
+            }
+        }
 
-if(this.level> 5){
+        if(this.level> 5){
 
-     if(Math.random()> 0.99 && this.babyDucks.length < 3 && !this.blockDuck) {
-    this.babyDucks.push(new BabyDuck(this.playScreen))
-     }
-    
-    
-    }
+            if(Math.random()> 0.99 && this.babyDucks.length < 3 && !this.blockDuck) {
+            this.babyDucks.push(new BabyDuck(this.playScreen))
+            }
+            
+            }
+
+        if(this.level> 7){
+
+            if(Math.random()> 0.98 && this.babyDucks.length < 5 && !this.blockDuck) {
+            this.babyDucks.push(new BabyDuck(this.playScreen))
+            }
+            
+            }    
 
 
 
@@ -590,6 +608,8 @@ if(this.level> 5){
         this.clouds = []
         this.pinkClouds.forEach(pinkCloud => pinkCloud.element.remove())
         this.pinkClouds = []
+        this.magicClouds.forEach(cloud => cloud.element.remove())
+        this.magicClouds = []
 
         this.enemies.forEach(enemy => enemy.element.remove())
         this.enemies = []

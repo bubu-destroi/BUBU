@@ -15,6 +15,10 @@ class Enemy {
            this.way=Math.floor(Math.random() * (3 - -2) + -2 )
            
         }
+
+        if(level>9){
+            this.way=Math.floor(Math.random() * (5 - -4) + -4 )
+        }
         
         console.log(this.way)
 
@@ -60,8 +64,11 @@ class Chicken {
 
         this.way = 1;
         if(level>6){
-           this.way=Math.floor(Math.random() * (3 - -2) + -2 )
-           
+           this.way=Math.floor(Math.random() * (3 - -2) + -2 )           
+        }
+
+        if (level>8){
+        this.way=Math.floor(Math.random() * (6 - -5) + -5) 
         }
 
         this.element = document.createElement('img');
