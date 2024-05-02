@@ -10,6 +10,7 @@ class Game{
         this.livesCountScreen = document.getElementById("livesCountScreen");
         this.gameoverContainer = document.getElementById("gameoverContainer");
         this.scoresScreen = document.getElementById("scoresScreen");
+        this.logo =document.getElementById("logo");
 
 
         this.hitTheClouds = new HitTheCloudz(this.playScreen);
@@ -22,7 +23,7 @@ class Game{
         this.cookieInfo = new CookieInfo(this.playScreen);
 
         this.height = 700;
-        this.width = 800;
+        this.width = 1000;
 
 
         this.clouds = [];
@@ -92,9 +93,9 @@ class Game{
 
         /* show the gamescreen */
         this.container.style.display = 'flex';
-        this.container.style.justifyContent = 'space-between';
+        this.container.style.justifyContent = 'center';
         this.gameoverScreen.style.display = 'none';
-        this.scoresScreen.style.display = "none"
+        this.scoresScreen.style.display = "none";
 
         /* should descend "HIT THE CLOUDS div" */
       
@@ -141,7 +142,7 @@ class Game{
             this.blueStarInfo.move()
         }
 
-        if(this.secCount>132){
+        if(this.secCount>135){
             this.moisesInfo.move()
 
         }

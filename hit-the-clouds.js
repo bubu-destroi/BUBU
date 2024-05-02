@@ -3,7 +3,7 @@
 class HitTheCloudz {
     constructor(playScreen) {
         this.playScreen = playScreen
-        this.left = 200;
+        this.left = 300;
         this.top = 0;
         this.width = 400;
         this.height = 300;
@@ -44,7 +44,7 @@ class HitTheCloudz {
 class Every30Cloud {
     constructor(playScreen) {
         this.playScreen = playScreen
-        this.left = 200;
+        this.left = 300;
         this.top = -300;
         this.width = 400;
         this.height = 300;
@@ -85,7 +85,7 @@ class Every30Cloud {
 class BirdsHateBubu {
     constructor(playScreen) {
         this.playScreen = playScreen
-        this.left = 200;
+        this.left = 300;
         this.top = -300;
         this.width = 400;
         this.height = 300;
@@ -126,7 +126,7 @@ class BirdsHateBubu {
 class RedStar {
     constructor(playScreen) {
         this.playScreen = playScreen
-        this.left = 200;
+        this.left = 300;
         this.top = -300;
         this.width = 400;
         this.height = 300;
@@ -170,7 +170,7 @@ class RedStar {
 class BlueStarInfo {
     constructor(playScreen) {
         this.playScreen = playScreen
-        this.left = 200;
+        this.left = 300;
         this.top = -300;
         this.width = 400;
         this.height = 300;
@@ -213,7 +213,7 @@ class BlueStarInfo {
 class MoisesInfo {
     constructor(playScreen) {
         this.playScreen = playScreen
-        this.left = 200;
+        this.left = 300;
         this.top = -300;
         this.width = 400;
         this.height = 300;
@@ -254,7 +254,7 @@ class MoisesInfo {
 class BabyInfo {
     constructor(playScreen) {
         this.playScreen = playScreen
-        this.left = 200;
+        this.left = 300;
         this.top = -300;
         this.width = 400;
         this.height = 300;
@@ -295,7 +295,7 @@ class BabyInfo {
 class CookieInfo {
     constructor(playScreen) {
         this.playScreen = playScreen
-        this.left = 200;
+        this.left = 300;
         this.top = -300;
         this.width = 400;
         this.height = 300;

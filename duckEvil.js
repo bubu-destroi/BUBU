@@ -3,10 +3,10 @@
 class DuckFamily {
     constructor(playScreen) {
         this.playScreen = playScreen
-        this.left = Math.floor(Math.random()  * 400 );
-        this.top = -384;
-        this.width = 400;
-        this.height = 384;
+        this.left = Math.floor(Math.random()  * 500 );
+        this.top = -231;
+        this.width = 450;
+        this.height = 231;
 
         this.element = document.createElement('img');
         this.element.src = './images/PATA-verde.png';
@@ -47,7 +47,7 @@ class BabyDuck {
     constructor(playScreen) {
         this.playScreen = playScreen
         this.left = Math.floor(Math.random() * 500 );
-        this.top = -400;
+        this.top = -200;
         this.width = 150;
 
         this.element = document.createElement('img');
