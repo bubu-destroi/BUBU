@@ -25,73 +25,85 @@
 
         <!--game screen, after pressing #butt-on-->
 
-        <div id="container"> <!-- has 3 div, should be displayed in row -->
+        <div id="bigFrame">
 
-            <!--this div is for leftCollumn, has 3 div inside: logo, livesCount, cloudCount
-            display collomun-->
-            <div id="leftCollumn">
-                <div id="bubu-img">
-                    <img src="./images/ bubudreamsLOGO.png"  alt="">
-                </div>
+                <div id="container"> <!-- has 3 div, should be displayed in row -->
 
-                <!--livesScreen needs a count over an image-->
+                    <!--this div is for leftCollumn, has 3 div inside: logo, livesCount, cloudCount
+                    display collomun-->
+                    <div id="leftCollumn">
+                        <div id="bubu-img">
+                            <img src="./images/ bubudreamsLOGO.png"  alt="">
+                        </div>
 
-                <div id="livesScreen"><!-- 
-                    <img src="./images/bubu.png" class="bubu-img" alt="" id="livesCat"> -->
-                    <h3 id="livesCountScreen"> LIVES
+                        <!--livesScreen needs a count over an image-->
 
-                    </h3> <!-- APPEND.livesCount -->
-                    <br>
-                    <p id="plives">LIVES</p>
-                </div>
+                        <div id="livesScreen"><!-- 
+                            <img src="./images/bubu.png" class="bubu-img" alt="" id="livesCat"> -->
+                            <h3 id="livesCountScreen"> LIVES
 
-                <!-- cloudsScreen needs a count over an image -->
+                            </h3> <!-- APPEND.livesCount -->
+                            <br>
+                            <p id="plives">LIVES</p>
+                        </div>
 
-                <div id="cloudScreen">
-                    <!-- <img src="./images/nuvenz.png" class="bubu-img" alt="" id="cloudLogo"> -->
-                    <h3 id="cloudCount"> CLOUDS
+                        <!-- cloudsScreen needs a count over an image -->
+
+                        <div id="cloudScreen">
+                            <!-- <img src="./images/nuvenz.png" class="bubu-img" alt="" id="cloudLogo"> -->
+                            <h3 id="cloudCount"> CLOUDS
+                                
+                            </h3><!-- APPEND.cloudCount -->
+                            <br>
+                            <p id="pcloud">CLOUDS</p>
+
+                        </div>
                         
-                    </h3><!-- APPEND.cloudCount -->
-                    <br>
-                    <p id="pcloud">CLOUDS</p>
+                    </div>
+
+                    <!-- this div is for playScreen -->
+                    <div id="playScreen">
+                    
+                    </div>
+
+
+                    <!-- this div is for rightCollumn, has 2 div. should display collumn -->
+
+                    <div id="rightCollumn">
+
+                        <div id="levelScreen">
+                            <h1 id="levelCount"></h1>
+                            <br>
+                            <p id="pLevel">LEVEL</p>
+                        </div>
+
+                        <!-- this div has seconds counting while game(), h1 width should be responsive-->
+
+                        <div id="timeScreen">
+                            <h1 id="secCount"></h1><!-- APPEND.seconds -->
+                            <br>
+                            <p id="pSec">SECONDS</p>
+                        </div>
+
+                        <!-- this div has points counting while game(), h1 width should be responsive -->
+
+                        <div id="pointsScreen">
+                            <h1 id="pointCount"></h1><!-- APPEND.gamePoints -->
+                            <br>
+                            <p id="pPoint">POINTS</p>
+                        </div>
+                    </div>
+                </div >
+
+
+                <div id="containerCurtain">
+                    <img id="cover" src="./images/fundoDebaixo.png" alt="">
+
+
 
                 </div>
-                
-            </div>
 
-            <!-- this div is for playScreen -->
-            <div id="playScreen">
-             
-            </div>
-
-
-            <!-- this div is for rightCollumn, has 2 div. should display collumn -->
-
-            <div id="rightCollumn">
-
-                <div id="levelScreen">
-                    <h1 id="levelCount"></h1>
-                    <br>
-                    <p id="pLevel">LEVEL</p>
-                </div>
-
-                <!-- this div has seconds counting while game(), h1 width should be responsive-->
-
-                <div id="timeScreen">
-                    <h1 id="secCount"></h1><!-- APPEND.seconds -->
-                    <br>
-                    <p id="pSec">SECONDS</p>
-                </div>
-
-                <!-- this div has points counting while game(), h1 width should be responsive -->
-
-                <div id="pointsScreen">
-                    <h1 id="pointCount"></h1><!-- APPEND.gamePoints -->
-                    <br>
-                    <p id="pPoint">POINTS</p>
-                </div>
-            </div>
-        </div >
+        </div>
 
 
          <!-- gameOverScreen - should display games played, div for bestTime, div for best score and restart button -->

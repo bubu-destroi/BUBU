@@ -11,6 +11,8 @@ class Game{
         this.gameoverContainer = document.getElementById("gameoverContainer");
         this.scoresScreen = document.getElementById("scoresScreen");
         this.logo =document.getElementById("logo");
+        this.bigFrame = document.getElementById('bigFrame');
+        this.containerCurtain = document.getElementById('containerCurtain');
 
 
         this.hitTheClouds = new HitTheCloudz(this.playScreen);
@@ -92,10 +94,14 @@ class Game{
         /* removing startScreenPannel */
 
         /* show the gamescreen */
+        this.bigFrame.style.display = 'flex';
         this.container.style.display = 'flex';
         this.container.style.justifyContent = 'center';
+        this.containerCurtain.style.display = 'flex';
+
         this.gameoverScreen.style.display = 'none';
         this.scoresScreen.style.display = "none";
+
 
         /* should descend "HIT THE CLOUDS div" */
       
@@ -650,6 +656,11 @@ if(this.secCount%30 === 0 && this.magicClouds.length ===0) {
         this.gameoverContainer.style.display = 'flex'
 
         this.scoresScreen.style.display = 'flex'
+
+
+        this.bigFrame.style.display = 'none';
+
+        this.containerCurtain.style.display = 'none'
 
         this.bubuWokeUp.innerText = 'BUBU WOKE UP'
 

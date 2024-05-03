@@ -6,7 +6,7 @@
 }
 
 body{
-  background-color: lightblue;
+  background-color: #add8e6;
 }
 
 #startScreenPannel{
@@ -224,3 +224,29 @@ h1,h3{
   width: 100px;
 }
 
+#bigFrame{
+  display: none;
+  flex-direction: column;
+}
+
+#containerCurtain{
+  display: none;
+  background-color:#add8e6;
+  padding: 0;
+  margin: 0;
+  border: none;
+  width: 100%;
+  object-fit: cover;
+
+}
+
+#cover{
+  position: fixed;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  object-fit: cover;
+  left: 0;
+  right: 0;
+}
