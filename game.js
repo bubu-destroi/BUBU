@@ -144,7 +144,7 @@ class Game{
 
         }
 
-        if(this.secCount>115){
+        if(this.secCount>85){
             this.blueStarInfo.move()
         }
 
@@ -438,7 +438,7 @@ if(this.secCount%30 === 0 && this.magicClouds.length ===0) {
             }
         }
 
-        if(this.level> 2 &&  !this.blockEnemies){
+        if(this.level> 1 &&  !this.blockEnemies){
              if(Math.random()> 0.98 && this.chickens.length < 4 * (this.level -1)) {
             this.chickens.push(new Chicken(this.playScreen, this.level))
              } }
@@ -468,7 +468,7 @@ if(this.secCount%30 === 0 && this.magicClouds.length ===0) {
                 }
             }
     
-            if(this.level> 4){
+            if(this.level> 3){
 
                  if(Math.random()> 0.99 && this.ducks.length < 1 * 1 && !this.blockDuck) {
                 this.ducks.push(new DuckFamily(this.playScreen, this.level))
@@ -633,11 +633,13 @@ if(this.secCount%30 === 0 && this.magicClouds.length ===0) {
         this.bubu.element.remove()
         this.sun.element.remove()
         this.hitTheClouds.element.remove()
-        this.birdsHateBubu.element.remove()
         this.every30cloud.element.remove()
+        this.birdsHateBubu.element.remove()
         this.redStarClears.element.remove()
+        this.blueStarInfo.element.remove()
         this.moisesInfo.element.remove()
         this.babyInfo.element.remove()
+        this.cookieInfo.element.remove()
 
 
         this.stars.forEach(star => star.element.remove())

@@ -56,7 +56,7 @@ class Chicken {
     constructor(playScreen, level) {
         this.playScreen = playScreen
         this.left = Math.floor(Math.random() * 900 + 50);
-        this.top = Math.floor(Math.random() * 100 );
+        this.top = 0;
         this.width = 50;
         this.height = 70;
 

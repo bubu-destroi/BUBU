@@ -116,8 +116,8 @@ class MagiCloud {
         this.playScreen = playScreen
         this.left = Math.floor(Math.random() * 500 );
         this.top = 0;
-        this.width = 30;
-        this.height = 30;
+        this.width = 60;
+        this.height = 60;
 
         this.element = document.createElement('img');
         this.element.src = './images/maria.png';
